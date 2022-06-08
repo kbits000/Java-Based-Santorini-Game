@@ -4,3 +4,6 @@ This is a Java implementation of Sentorini game. Santorini is strategy game wher
 
 ### Credits<br>
 It has been done by three students (including me).
+
+### License<br>
+This project is licensed under GNU General Public License v3.0 license.
