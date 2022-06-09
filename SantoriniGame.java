@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 public class SantoriniGame {
 	static String[][] board = new String[5][5];
 	static Worker[] workers;
-
+	static String[] playerName = new String[2];
+	
 	public SantoriniGame() {
 
 		board = new String[5][5];
@@ -304,28 +305,40 @@ public class SantoriniGame {
 		return false;
 	}
 
-	// not finished yet. it depends on the design of main method
-	public boolean hasWon() {
+	public static boolean hasWon() {
 		int p = 0;
 		boolean win = false;
 		boolean match = false;
-
+		
 		for (int i = 0; i < board.length; ++i) {
-
+			
 			for (int j = 0; j < board[i].length; ++j) {
-
+				p = 0;
 				while (p < 4) {
-					if (workers[p].positionX == j && workers[p].positionY == i) {
+
+					if (workers[p].positionX == i && workers[p].positionY == j) {
 						match = true;
 					}
 					if (board[i][j].equals("BBB") && match) {// if true then someone has won
 						win = true;
 						System.out.println(
 								"*********************\r\n" + "*********************\r\n" + "*********************");
+						// new code
+						if (workers[0].positionX == i && workers[0].positionY == j) {
+							System.out.println(playerName[0]);
+						} else if (workers[1].positionX == i && workers[1].positionY == j) {
+							System.out.println(playerName[0]);
+						} else if (workers[2].positionX == i && workers[2].positionY == j) {
+							System.out.println(playerName[2]);
+						} else if (workers[3].positionX == i && workers[3].positionY == j) {
+							System.out.println(playerName[2]);
+						}
+						
 						System.out.println(
 								"*********************\r\n" + "*********************\r\n" + "*********************");
 					}
 					p++;
+					match = false;
 				}
 
 			}
@@ -357,7 +370,7 @@ public class SantoriniGame {
 		int x = 0, y = 0;
 		int aP = 0, n = 0;
 
-		String[] playerName = new String[2];
+		//String[] playerName = new String[2];
 
 		System.out.println("############ Santorini ############");
 		System.out.println("");
@@ -445,6 +458,7 @@ public class SantoriniGame {
 			display(board);
 
 		}
-
+		
+		hasWon();
 	}
 }
